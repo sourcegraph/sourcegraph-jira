@@ -1,3 +1,4 @@
+import escapeHTML from 'escape-html'
 import * as sourcegraph from 'sourcegraph'
 import { getAPIParams, getIssue, Issue } from './jira'
 import { Settings, settingsRegistration } from './settings'
@@ -33,7 +34,7 @@ export function registerLinkPreviewProvider(): sourcegraph.Unsubscribable {
                 return {
                     content: {
                         kind: sourcegraph.MarkupKind.Markdown,
-                        value: [issue.summary, statusIcon(issue.status)].filter(v => !!v).join(' '),
+                        value: escapeHTML([issue.summary, statusIcon(issue.status)].filter(v => !!v).join(' ')),
                     },
                     hover: {
                         kind: sourcegraph.MarkupKind.PlainText as sourcegraph.MarkupKind.PlainText,
