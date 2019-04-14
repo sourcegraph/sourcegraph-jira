@@ -21,7 +21,13 @@ export function registerCompanyCompletionProvider(): sourcegraph.Unsubscribable 
             if (!wordRange) {
                 return null
             }
-            const word = doc.text.slice(doc.offsetAt(wordRange.start), doc.offsetAt(wordRange.end))
+            let word = doc.text.slice(doc.offsetAt(wordRange.start), doc.offsetAt(wordRange.end))
+
+            // Support completion of full URLs like "https://example.atlassian.net/browse/KEY-" and just "KEY-".
+            const fullURLPrefix = `${apiParams.jiraUrl.replace(/\/$/, '')}/browse/`
+            if (word.startsWith(fullURLPrefix)) {
+                word = word.slice(fullURLPrefix.length)
+            }
 
             // Look for "KEY-", where KEY is a possibly valid Jira issue key ([A-Z]{2,}).
             const m = word.match(/^([A-Z]{2,})-/)
@@ -34,7 +40,7 @@ export function registerCompanyCompletionProvider(): sourcegraph.Unsubscribable 
             const issues = await getIssues(apiParams, project, query)
             return {
                 items: issues.map(issue => ({
-                    label: `${issue.key}: ${escapeHTML(issue.summary)}`,
+                    label: `${issue.key}: ${issue.summary}`,
                     insertText: escapeHTML(issue.url) + ' ',
                 })),
             }
