@@ -1,0 +1,78 @@
+{
+  "name": "jira",
+  "description": "Jira issue link previews and issue autocompletion on GitHub",
+  "publisher": "sourcegraph",
+  "activationEvents": [
+    "*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/sourcegraph-jira"
+  },
+  "wip": true,
+  "contributes": {
+    "configuration": {
+      "title": "Atlassian Jira configuration",
+      "type": "object",
+      "required": [
+        "jira.url",
+        "jira.username",
+        "jira.apiToken"
+      ],
+      "properties": {
+        "jira.url": {
+          "description": "Jira URL",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://example.atlassian.net"
+          ]
+        },
+        "jira.username": {
+          "description": "Jira username",
+          "type": "string",
+          "format": "email",
+          "examples": [
+            "alice@example.com"
+          ]
+        },
+        "jira.apiToken": {
+          "description": "Jira API token",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "version": "0.0.0-DEVELOPMENT",
+  "license": "MIT",
+  "main": "dist/extension.js",
+  "scripts": {
+    "tslint": "tslint -p tsconfig.json './src/**/*.ts'",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "parcel build --out-file dist/extension.js src/extension.ts",
+    "serve": "parcel serve --no-hmr --out-file dist/extension.js src/extension.ts",
+    "watch:typecheck": "tsc -p tsconfig.json -w",
+    "watch:build": "tsc -p tsconfig.dist.json -w",
+    "sourcegraph:prepublish": "npm run build"
+  },
+  "browserslist": [
+    "last 1 Chrome versions",
+    "last 1 Firefox versions",
+    "last 1 Edge versions",
+    "last 1 Safari versions"
+  ],
+  "devDependencies": {
+    "@sourcegraph/prettierrc": "^2.2.0",
+    "@sourcegraph/tsconfig": "^4.0.0",
+    "@sourcegraph/tslint-config": "^13.0.0",
+    "@types/lodash": "^4.14.123",
+    "parcel-bundler": "^1.11.0",
+    "sourcegraph": "^23.0.0",
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "rxjs": "^6.4.0"
+  }
+}
