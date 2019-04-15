@@ -138,11 +138,11 @@ async function jiraFetch({ jiraUrl, jiraUsername, apiToken }: APIParams, request
             headers: getHeaders({ jiraUsername, apiToken }),
         })
         if (resp.status !== 200) {
-            throw new Error(await resp.text())
+            throw new Error(`Non-200 response: ${await resp.text()}`)
         }
         return resp.json()
     } catch (err) {
-        if (err instanceof Error && !err.message) {
+        if (err instanceof Error && !err.message.includes('Non-200')) {
             showPermissionsRequestAlert({ jiraUrl })
         }
         throw err
@@ -155,7 +155,9 @@ function showPermissionsRequestAlert({ jiraUrl }: Pick<APIParams, 'jiraUrl'>): v
         // Request permissions to bypass CORS.
         shownPermissionsRequestAlert = true
         sourcegraph.app.activeWindow.showNotification(
-            `To see Jira info, you must visit ${jiraUrl} and right-click the Sourcegraph toolbar icon to **Enable Sourcegraph on this domain**.`,
+            sourcegraph.internal.clientApplication === 'other'
+                ? `To see Jira info, you must visit ${jiraUrl} and right-click the Sourcegraph toolbar icon to **Enable Sourcegraph on this domain**.`
+                : "The Jira extension does not work on the Sourcegraph web app due to Jira's CORS policy. As a workaround, you can run `cors-anywhere` locally:\n\n```shell\ngit clone https://github.com/Rob--W/cors-anywhere\ncd cors-anywhere\nPORT=9018 node server.js\n```\n\nThen try again.",
             sourcegraph.NotificationType.Error
         )
     }
