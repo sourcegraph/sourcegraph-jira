@@ -82,8 +82,17 @@ export async function getIssues(
     const u = new URL('https://example.com/rest/api/2/search')
     u.searchParams.set('jql', `${jqlConditions.join(' and ')} ORDER BY priority, updatedDate DESC`)
 
-    const data = await jiraFetch({ jiraUrl, jiraUsername, apiToken }, u.pathname + u.search)
-    const issues: Issue[] = data.issues.map((data: any) => toIssue({ jiraUrl }, project, data))
+    let issues: Issue[]
+    try {
+        const data = await jiraFetch({ jiraUrl, jiraUsername, apiToken }, u.pathname + u.search)
+        issues = data.issues.map((data: any) => toIssue({ jiraUrl }, project, data))
+        return issues
+    } catch (err) {
+        if (!(err instanceof Error) || !err.message.includes('does not exist')) {
+            throw err
+        }
+        issues = []
+    }
     issueQueryCache.set(query, issues)
     return issues
 }
@@ -133,7 +142,9 @@ async function jiraFetch({ jiraUrl, jiraUsername, apiToken }: APIParams, request
         }
         return resp.json()
     } catch (err) {
-        showPermissionsRequestAlert({ jiraUrl })
+        if (err instanceof Error && !err.message) {
+            showPermissionsRequestAlert({ jiraUrl })
+        }
         throw err
     }
 }

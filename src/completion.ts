@@ -40,7 +40,8 @@ export function registerCompanyCompletionProvider(): sourcegraph.Unsubscribable 
             const issues = await getIssues(apiParams, project, query)
             return {
                 items: issues.map(issue => ({
-                    label: `${issue.key}: ${issue.summary}`,
+                    label: issue.key,
+                    description: issue.summary,
                     insertText: escapeHTML(issue.url) + ' ',
                 })),
             }
