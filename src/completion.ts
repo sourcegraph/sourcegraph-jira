@@ -3,9 +3,6 @@ import * as sourcegraph from 'sourcegraph'
 import { getAPIParams, getIssues } from './jira'
 
 export function registerCompanyCompletionProvider(): sourcegraph.Unsubscribable {
-    if (!('registerCompletionItemProvider' in sourcegraph.languages)) {
-        return { unsubscribe: () => void 0 }
-    }
     return sourcegraph.languages.registerCompletionItemProvider([{ scheme: 'comment' }, { scheme: 'snippet' }], {
         provideCompletionItems: async (doc, pos) => {
             const apiParams = getAPIParams()
