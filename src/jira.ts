@@ -155,7 +155,7 @@ function showPermissionsRequestAlert({ jiraUrl }: Pick<APIParams, 'jiraUrl'>): v
         // Request permissions to bypass CORS.
         shownPermissionsRequestAlert = true
         sourcegraph.app.activeWindow.showNotification(
-            `To see Jira info, you must visit<br>${jiraUrl} and right-click the<br> Sourcegraph toolbar icon to<br> **Enable Sourcegraph on this domain**.`,
+            `To see Jira info, you must visit ${jiraUrl} and right-click the Sourcegraph toolbar icon to **Enable Sourcegraph on this domain**.`,
             sourcegraph.NotificationType.Error
         )
     }
