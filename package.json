@@ -71,7 +71,7 @@
     "@types/escape-html": "^0.0.20",
     "@types/lodash": "^4.14.123",
     "parcel-bundler": "^1.11.0",
-    "sourcegraph": "^23.0.0",
+    "sourcegraph": "^24.7.0",
     "tslint": "^5.15.0",
     "typescript": "^3.4.2"
   },

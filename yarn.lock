@@ -4599,10 +4599,10 @@ source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
 
-sourcegraph@^23.0.0:
-  version "23.0.0"
-  resolved "https://registry.yarnpkg.com/sourcegraph/-/sourcegraph-23.0.0.tgz#1fb96015af3e84cc9cc2944823f04a7e952ed565"
-  integrity sha512-hQALHrTt+AK5ZAqUAUNhxO7ClSv/xyTjMQPBb+hQykKJrMaHTk+CnJNHs7dRfXYKnbnZeisQRjaxKGX8UecU0Q==
+sourcegraph@^24.7.0:
+  version "24.7.0"
+  resolved "https://registry.yarnpkg.com/sourcegraph/-/sourcegraph-24.7.0.tgz#24cf034f055d1a951f0b081e2d0a4338df650420"
+  integrity sha512-PlGvkdBy5r5iHdKAVNY/jsPgWb3oY+2iAdIQ3qR83UHhvBFVgoctDAnyfJ1eMstENY3etBWtAJ8Kleoar3ecaA==
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
