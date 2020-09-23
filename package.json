@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/sourcegraph/sourcegraph-jira"
   },
+  "categories": [
+    "External services"
+  ],
   "wip": true,
   "contributes": {
     "configuration": {
