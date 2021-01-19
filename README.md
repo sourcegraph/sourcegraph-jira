@@ -22,7 +22,7 @@ If using GitHub Enterprise, right-click on the Sourcegraph browser extension ico
 
 ## Configuring user settings
 
-The `jira.apiToken`, `jira.url`, and `jira.username` values should be added as top-level strings in the user settings (outside of the `extensions` object), eg:
+The `jira.apiToken`, `jira.url`, and `jira.username` values should be added as top-level keys in the user settings (outside of the `extensions` object), eg:
 
 ```
 {
