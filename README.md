@@ -30,12 +30,12 @@ The `jira.apiToken`, `jira.url`, and `jira.username` values should be added as t
 		"sourcegraph/jira": true
 	},
 	"jira.apiToken": "token",
-	"jira.url": "https://sourcegraph.atlassian.net",
-	"jira.username": "emily@sourcegraph.com"
+	"jira.url": "https://example.atlassian.net",
+	"jira.username": "user@example.com"
 }
 ```
 
-Follow [these instructions](https://confluence.atlassian.com/cloud/api-tokens-938839638.html) to generate a Jira Cloud API token. The `jira.url` should be the base URL for your Jira instance, eg `https://sourcegraph.atlassian.net/`. The `jira.username` is the email address you use to authenticate with Jira.
+Follow [these instructions](https://confluence.atlassian.com/cloud/api-tokens-938839638.html) to generate a Jira Cloud API token. The `jira.url` should be the base URL for your Jira instance, eg `https://example.atlassian.net/`. The `jira.username` is the email address you use to authenticate with Jira.
 
 ## Features
 
