@@ -35,7 +35,7 @@ The `jira.apiToken`, `jira.url`, and `jira.username` values should be added as t
 }
 ```
 
-Follow [these instructions](https://confluence.atlassian.com/cloud/api-tokens-938839638.html) to generate a Jira Cloud API token. The `jira.url` should be the base URL for your Jira instance, eg `https://example.atlassian.net/`. The `jira.username` is the email address you use to authenticate with Jira.
+Follow [Atlassian's instructions on API tokens](https://confluence.atlassian.com/cloud/api-tokens-938839638.html) to generate a Jira Cloud API token. The `jira.url` should be the base URL for your Jira instance, e.g. `https://example.atlassian.net/`. The `jira.username` is the email address you use to authenticate with Jira.
 
 ## Features
 
