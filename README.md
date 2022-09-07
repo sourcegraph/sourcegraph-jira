@@ -1,5 +1,14 @@
 # Jira extension for Sourcegraph
 
+## ⚠️ Deprecation notice
+
+**Sourcegraph extensions have been deprecated with the September 2022 Sourcegraph
+release. [Learn more](https://docs.sourcegraph.com/extensions/deprecation).**
+
+The repo and the docs below are kept to support older Sourcegraph versions.
+
+## Description
+
 A [Sourcegraph extension](https://docs.sourcegraph.com/extensions) that enhances GitHub with better [Jira](https://www.atlassian.com/software/jira) integration.
 
 [**🗃️ Source code**](https://github.com/sourcegraph/sourcegraph-jira)
