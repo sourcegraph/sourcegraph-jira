@@ -1,6 +1,5 @@
 import { isEqual } from 'lodash'
-import { from, Observable } from 'rxjs'
-import { distinctUntilChanged, finalize, map } from 'rxjs/operators'
+import { distinctUntilChanged, finalize, from, map, Observable } from 'rxjs'
 import * as sourcegraph from 'sourcegraph'
 
 export interface Settings {
